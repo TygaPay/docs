@@ -6,29 +6,15 @@
     "description": "Simply Integration into the Tyga Pay Platform"
   },
   "paths": {
-    "/users/v1/get": {
-      "get": {
-        "summary": "Fetch a user by id",
-        "description": null,
-        "tags": [
-          "Users"
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns a mysterious string."
-          }
-        }
-      }
-    },
-    "/v1/create": {
+    "/tenants/v1/create": {
       "post": {
-        "description": "Creates a new user",
+        "summary": "Creates a new tenant",
         "tags": [
-          "Users"
+          "Tenants"
         ],
         "servers": [
           {
-            "url": "https://echo.example.com"
+            "url": "https://tenants-api-rdqehkur6a-ey.a.run.app"
           }
         ],
         "requestBody": {
@@ -36,7 +22,120 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserCreate"
+                "$ref": "#/components/schemas/Tenant"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TenantCreate"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Permission denied"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/users/v1/get": {
+      "get": {
+        "summary": "Fetch an user by id",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user response by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/v1/balances/get": {
+      "get": {
+        "summary": "Fetch an users balances by id",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a mysterious string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBalances"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/v1/create": {
+      "post": {
+        "summary": "Creates a new user",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -60,25 +159,45 @@
           }
         }
       }
-    },
-    "/users/v1/balances/get": {
-      "get": {
-        "summary": "Fetch a user by id",
-        "description": null,
-        "tags": [
-          "Users"
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns a mysterious string."
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "UserCreate": {
+      "Tenant": {
+        "type": "object",
+        "required": [
+          "code",
+          "name"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The code of the tenant"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the tenant"
+          }
+        }
+      },
+      "TenantCreate": {
+        "type": "object",
+        "properties": {
+          "apiSecret": {
+            "type": "string",
+            "description": "A secret for the new tenant"
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "A unique API Key for the new tenant"
+          },
+          "message": {
+            "type": "string",
+            "description": "A friendly message after a new tenant is created"
+          }
+        }
+      },
+      "User": {
         "type": "object",
         "required": [
           "thirdPartyUserId",
@@ -122,12 +241,25 @@
           }
         }
       },
-      "UserCreateResponse": {
+      "UserBalances": {
         "type": "object",
-        "required": [
-          "userId",
-          "thirdPartyUserId"
-        ],
+        "properties": {
+          "totalBalance": {
+            "type": "number",
+            "description": "The users total balance"
+          },
+          "mainBalance": {
+            "type": "number",
+            "description": "The users main balance"
+          },
+          "pendingBalance": {
+            "type": "number",
+            "description": "The users pending balance"
+          }
+        }
+      },
+      "UserCreate": {
+        "type": "object",
         "properties": {
           "userId": {
             "type": "string",
@@ -142,6 +274,10 @@
     }
   },
   "tags": [
+    {
+      "name": "Tenants",
+      "description": "The tenants managing API"
+    },
     {
       "name": "Users",
       "description": "The users managing API"
