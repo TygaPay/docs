@@ -6,7 +6,7 @@
     "description": "Simply Integration into the Tyga Pay Platform"
   },
   "paths": {
-    "/v1/tenant": {
+    "/tenant": {
       "post": {
         "summary": "Creates a new tenant",
         "tags": [
@@ -14,7 +14,7 @@
         ],
         "servers": [
           {
-            "url": "https://tenants-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
         "requestBody": {
@@ -47,7 +47,7 @@
         }
       }
     },
-    "/v1/user": {
+    "/user": {
       "get": {
         "summary": "Fetch the user by id",
         "tags": [
@@ -55,7 +55,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -107,7 +107,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -160,7 +160,7 @@
         }
       }
     },
-    "/v1/user/balances": {
+    "/user/balances": {
       "get": {
         "summary": "Fetch the balances of the user by id",
         "tags": [
@@ -168,7 +168,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
         "parameters": [
