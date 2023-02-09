@@ -6,7 +6,7 @@
     "description": "Simply Integration into the Tyga Pay Platform"
   },
   "paths": {
-    "/tenants/v1/create": {
+    "/v1/tenant": {
       "post": {
         "summary": "Creates a new tenant",
         "tags": [
@@ -47,9 +47,9 @@
         }
       }
     },
-    "/users/v1/get": {
+    "/v1/user": {
       "get": {
-        "summary": "Fetch an user by id",
+        "summary": "Fetch the user by id",
         "tags": [
           "Users"
         ],
@@ -67,6 +67,24 @@
             },
             "required": true,
             "description": "The user id"
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
           }
         ],
         "responses": {
@@ -81,11 +99,9 @@
             }
           }
         }
-      }
-    },
-    "/users/v1/balances/get": {
-      "get": {
-        "summary": "Fetch an users balances by id",
+      },
+      "post": {
+        "summary": "Creates a new user",
         "tags": [
           "Users"
         ],
@@ -96,38 +112,22 @@
         ],
         "parameters": [
           {
-            "in": "query",
-            "name": "userId",
+            "in": "header",
+            "name": "x-api-key",
             "schema": {
               "type": "string"
             },
             "required": true,
-            "description": "The user id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Returns a mysterious string.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserBalances"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users/v1/create": {
-      "post": {
-        "summary": "Creates a new user",
-        "tags": [
-          "Users"
-        ],
-        "servers": [
+            "description": "Your unique API Key"
+          },
           {
-            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
           }
         ],
         "requestBody": {
@@ -156,6 +156,60 @@
           },
           "500": {
             "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/v1/user/balances": {
+      "get": {
+        "summary": "Fetch the balances of the user by id",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a mysterious string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBalances"
+                }
+              }
+            }
           }
         }
       }
@@ -238,6 +292,14 @@
             "type": "string",
             "format": "date",
             "description": "Date of birth of the user"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the user"
+          },
+          "kycExperienceId": {
+            "type": "string",
+            "description": "KYC Experience Id of the user"
           }
         }
       },
