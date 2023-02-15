@@ -212,6 +212,75 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Credit user balance. All credits will be locked/pending until the funds are confirmed.",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceCreditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User balance successfully credited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique ID for the transaction"
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique ID of the third party involved in the transaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User with the same third party ID already exists"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
       }
     }
   },
@@ -300,6 +369,28 @@
           "kycExperienceId": {
             "type": "string",
             "description": "KYC Experience Id of the user"
+          }
+        }
+      },
+      "BalanceCreditRequest": {
+        "type": "object",
+        "required": [
+          "userId",
+          "amount",
+          "thirdPartyId"
+        ],
+        "properties": {
+          "thirdPartyId": {
+            "type": "string",
+            "description": "Third party transaction id"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Tyga user id"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount to credit"
           }
         }
       },
