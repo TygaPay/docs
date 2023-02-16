@@ -90,7 +90,51 @@
               }
             }
           },
-          "404": {
+          "409": {
+            "description": "Permission denied"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/tenant/deposit-addresses": {
+      "get": {
+        "summary": "Fetches the deposit addresses for a tenant",
+        "tags": [
+          "Tenants"
+        ],
+        "servers": [
+          {
+            "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string",
+                        "description": "The deposit address for the tenant"
+                      },
+                      "network": {
+                        "type": "string",
+                        "description": "The network for the deposit address"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
             "description": "Permission denied"
           },
           "500": {
