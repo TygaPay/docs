@@ -143,6 +143,82 @@
         }
       }
     },
+    "/transactions": {
+      "get": {
+        "summary": "Fetches a list of transactions for a user",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "description": "The ID of the transaction to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "required": true,
+            "description": "The ID of the user whose transactions to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "The unique ID of the transaction"
+                      },
+                      "userId": {
+                        "type": "string",
+                        "description": "The ID of the user who initiated the transaction"
+                      },
+                      "tenantId": {
+                        "type": "string",
+                        "description": "The ID of the tenant associated with the transaction"
+                      },
+                      "status": {
+                        "type": "string",
+                        "description": "The current status of the transaction"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "The amount of the transaction"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Permission denied"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
     "/user": {
       "get": {
         "summary": "Fetch the user by id",
@@ -526,6 +602,10 @@
     {
       "name": "Tenants",
       "description": "The tenants managing API"
+    },
+    {
+      "name": "Transactions",
+      "description": "API for managing transactions"
     },
     {
       "name": "Users",
