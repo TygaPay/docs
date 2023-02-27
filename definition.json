@@ -225,6 +225,322 @@
           }
         }
       }
+    },
+    "/user": {
+      "get": {
+        "summary": "Fetch the user by id",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user response by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a new user",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCreate"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User with the same third party ID already exists"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/user/balances": {
+      "get": {
+        "summary": "Fetch the balances of the user by id",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a mysterious string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBalances"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Credit user balance. All credits will be locked/pending until the funds are confirmed.",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceCreditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User balance successfully credited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique ID for the transaction"
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique ID of the third party involved in the transaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User with the same third party ID already exists"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/user/deposit-addresses": {
+      "get": {
+        "summary": "Fetches the deposit addresses for a user",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key"
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string",
+                        "description": "The deposit address for the tenant"
+                      },
+                      "network": {
+                        "type": "string",
+                        "description": "The network for the deposit address"
+                      },
+                      "supportedTokens": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The supported tokens for the deposit address"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Permission denied"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -377,6 +693,10 @@
     {
       "name": "Transactions",
       "description": "API for managing transactions"
+    },
+    {
+      "name": "Users",
+      "description": "The users managing API"
     }
   ]
 }
