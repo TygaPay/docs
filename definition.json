@@ -398,7 +398,8 @@
                     "type": "string",
                     "enum": [
                       "withdrawal",
-                      "userPay"
+                      "userPay",
+                      "providerPay"
                     ]
                   }
                 }
