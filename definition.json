@@ -374,7 +374,7 @@
     },
     "/transactions/verification": {
       "post": {
-        "summary": "Generates a verification code for a user",
+        "summary": "Generates a verification code for a user and send to the user's email",
         "tags": [
           "Transactions"
         ],
