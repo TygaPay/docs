@@ -862,6 +862,122 @@
   },
   "components": {
     "schemas": {
+      "OrderCreate": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Description of the order"
+          },
+          "customerId": {
+            "type": "string",
+            "description": "ID of the customer making the order"
+          },
+          "orderNumber": {
+            "type": "string",
+            "description": "Unique order number"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Total amount of the order"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email of the customer making the order"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the customer making the order"
+          },
+          "notifyUrl": {
+            "type": "string",
+            "description": "URL to notify after order is completed"
+          },
+          "returnUrl": {
+            "type": "string",
+            "description": "URL to redirect to after order is completed"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the order."
+          },
+          "customerId": {
+            "type": "string",
+            "description": "The ID of the customer who placed the order."
+          },
+          "orderNumber": {
+            "type": "string",
+            "description": "The unique order number."
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description of the order."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The total amount of the order."
+          },
+          "amountPaid": {
+            "type": "number",
+            "description": "The amount paid towards the order."
+          },
+          "amountDue": {
+            "type": "number",
+            "description": "The amount due for the order."
+          },
+          "status": {
+            "$ref": "#/components/schemas/OrderStatus",
+            "description": "The status of the order."
+          },
+          "state": {
+            "$ref": "#/components/schemas/OrderState",
+            "description": "The state of the order."
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the customer who placed the order."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the customer who placed the order."
+          },
+          "notifyUrl": {
+            "type": "string",
+            "description": "The URL to notify upon order completion."
+          },
+          "returnUrl": {
+            "type": "string",
+            "description": "The URL to redirect to upon order completion."
+          },
+          "createdDate": {
+            "type": "string",
+            "description": "The date the order was created."
+          },
+          "modifiedDate": {
+            "type": "string",
+            "description": "The date the order was last modified."
+          }
+        }
+      },
+      "OrderStatus": {
+        "type": "string",
+        "enum": [
+          "new"
+        ],
+        "description": "The status of the order (WIP more statusses coming)."
+      },
+      "OrderState": {
+        "type": "string",
+        "enum": [
+          "pending"
+        ],
+        "description": "The state of the order (WIP more states coming)."
+      },
       "Tenant": {
         "type": "object",
         "required": [
