@@ -12,6 +12,11 @@
         "tags": [
           "Orders"
         ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
