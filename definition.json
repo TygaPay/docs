@@ -897,7 +897,12 @@
             "type": "string",
             "description": "URL to redirect to after order is completed"
           }
-        }
+        },
+        "required": [
+          "customerId",
+          "orderNumber",
+          "amount"
+        ]
       },
       "Order": {
         "type": "object",
