@@ -1079,7 +1079,7 @@
         "properties": {
           "thirdPartyId": {
             "type": "string",
-            "description": "Third party transaction id"
+            "description": "Third party unique transaction id - used to prevent duplicate transactions"
           },
           "userId": {
             "type": "string",
