@@ -40,8 +40,7 @@
                       "description": "A message indicating the result of the operation"
                     },
                     "data": {
-                      "type": "object",
-                      "description": "The order object"
+                      "$ref": "#/components/schemas/OrderCreateResponse"
                     }
                   }
                 }
@@ -973,6 +972,19 @@
           "pending"
         ],
         "description": "The state of the order (WIP more states coming)."
+      },
+      "OrderCreateResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "The TygaPay order id of the order."
+          },
+          "paymentUrl": {
+            "type": "string",
+            "description": "The payment url to redirect to."
+          }
+        }
       },
       "Tenant": {
         "type": "object",
