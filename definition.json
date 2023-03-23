@@ -224,6 +224,10 @@
                   "items": {
                     "type": "object",
                     "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the deposit address (e.g. \"deposit_wallet\")"
+                      },
                       "address": {
                         "type": "string",
                         "description": "The deposit address for the tenant"
