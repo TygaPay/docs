@@ -168,6 +168,10 @@
                   "items": {
                     "type": "object",
                     "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The name of the wallet (e.g. \"Tyga Wallet\")"
+                      },
                       "type": {
                         "type": "string",
                         "description": "The type of wallet (e.g. \"deposit_wallet\")"
@@ -990,7 +994,8 @@
         "type": "object",
         "required": [
           "code",
-          "name"
+          "name",
+          "email"
         ],
         "properties": {
           "code": {
