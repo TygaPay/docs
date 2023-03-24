@@ -174,7 +174,7 @@
                       },
                       "type": {
                         "type": "string",
-                        "description": "The type of wallet (e.g. \"deposit_wallet\")"
+                        "description": "The type of wallet (e.g. \"distribution_wallet\")"
                       },
                       "balance": {
                         "type": "number",
@@ -226,7 +226,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "The name of the deposit address (e.g. \"deposit_wallet\")"
+                        "description": "The name of the deposit address (e.g. \"distribution_wallet\")"
                       },
                       "address": {
                         "type": "string",
