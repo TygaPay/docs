@@ -1001,7 +1001,7 @@
         "required": [
           "code",
           "name",
-          "email"
+          "contactEmail"
         ],
         "properties": {
           "code": {
@@ -1012,9 +1012,9 @@
             "type": "string",
             "description": "The name of the tenant"
           },
-          "email": {
+          "contactEmail": {
             "type": "string",
-            "description": "The email of the tenant - typically the admin email"
+            "description": "The contact email of the tenant - typically the admin contact email"
           }
         }
       },
