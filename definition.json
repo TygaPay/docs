@@ -106,6 +106,58 @@
         }
       }
     },
+    "/orders/{orderId}/cancel": {
+      "put": {
+        "summary": "Cancels an order by ID",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "required": true,
+            "description": "ID of the order to cancel",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order successfully canceled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "A message indicating the result of the operation"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/OrderCancelResponse"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status to cancel"
+          },
+          "401": {
+            "description": "Unauthorized access"
+          },
+          "404": {
+            "description": "Order not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/tenant": {
       "post": {
         "summary": "Creates a new tenant",
@@ -993,6 +1045,23 @@
           "paymentUrl": {
             "type": "string",
             "description": "The payment url to redirect to."
+          }
+        }
+      },
+      "OrderCancelResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "The TygaPay order id of the order."
+          },
+          "state": {
+            "type": "string",
+            "description": "Order state after cancellation."
+          },
+          "status": {
+            "type": "string",
+            "description": "Order status after cancellation."
           }
         }
       },
