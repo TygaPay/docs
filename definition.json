@@ -325,7 +325,7 @@
           {
             "in": "query",
             "name": "id",
-            "required": true,
+            "required": false,
             "description": "The ID of the transaction to retrieve",
             "schema": {
               "type": "string"
