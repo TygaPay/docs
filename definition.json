@@ -158,7 +158,7 @@
         }
       }
     },
-    "/orders/refund": {
+    "/orders/{orderId}/refund": {
       "post": {
         "summary": "Refunds an order by ID",
         "tags": [
