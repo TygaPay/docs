@@ -8,7 +8,7 @@
   "paths": {
     "/orders": {
       "post": {
-        "summary": "Creates a new order",
+        "summary": "Create a new order.",
         "tags": [
           "Orders"
         ],
@@ -29,7 +29,7 @@
         },
         "responses": {
           "200": {
-            "description": "Order successfully created",
+            "description": "Order successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -37,7 +37,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "description": "A message indicating the result of the operation"
+                      "description": "A message indicating the result of the operation."
                     },
                     "data": {
                       "$ref": "#/components/schemas/OrderCreateResponse"
@@ -48,18 +48,18 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body."
           },
           "401": {
-            "description": "Unauthorized access"
+            "description": "Unauthorized access."
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error."
           }
         }
       },
       "get": {
-        "summary": "Retrieves an order by ID",
+        "summary": "Retrieves an order by Id.",
         "tags": [
           "Orders"
         ],
@@ -68,7 +68,7 @@
             "in": "path",
             "name": "orderId",
             "required": true,
-            "description": "ID of the order to retrieve",
+            "description": "Id of the order to retrieve.",
             "schema": {
               "type": "string"
             }
@@ -76,7 +76,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Order successfully retrieved",
+            "description": "Order successfully retrieved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -84,7 +84,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "description": "A message indicating the result of the operation"
+                      "description": "A message indicating the result of the operation."
                     },
                     "data": {
                       "$ref": "#/components/schemas/Order"
@@ -95,20 +95,20 @@
             }
           },
           "401": {
-            "description": "Unauthorized access"
+            "description": "Unauthorized access."
           },
           "404": {
-            "description": "Order not found"
+            "description": "Order not found."
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error."
           }
         }
       }
     },
     "/orders/{orderId}/cancel": {
       "put": {
-        "summary": "Cancels an order by ID",
+        "summary": "Cancels an order by Id.",
         "tags": [
           "Orders"
         ],
@@ -117,7 +117,7 @@
             "in": "path",
             "name": "orderId",
             "required": true,
-            "description": "ID of the order to cancel",
+            "description": "Id of the order to cancel.",
             "schema": {
               "type": "string"
             }
@@ -125,7 +125,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Order successfully canceled",
+            "description": "Order successfully canceled.",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,7 +133,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "description": "A message indicating the result of the operation"
+                      "description": "A message indicating the result of the operation."
                     },
                     "data": {
                       "$ref": "#/components/schemas/OrderCancelResponse"
@@ -144,23 +144,23 @@
             }
           },
           "400": {
-            "description": "Invalid status to cancel"
+            "description": "Invalid status to cancel."
           },
           "401": {
-            "description": "Unauthorized access"
+            "description": "Unauthorized access."
           },
           "404": {
-            "description": "Order not found"
+            "description": "Order not found."
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error."
           }
         }
       }
     },
     "/orders/{orderId}/refund": {
       "post": {
-        "summary": "Refunds an order by ID",
+        "summary": "Refunds an order by Id.",
         "tags": [
           "Orders"
         ],
@@ -176,7 +176,7 @@
         },
         "responses": {
           "200": {
-            "description": "Order successfully refunded",
+            "description": "Order successfully refunded.",
             "content": {
               "application/json": {
                 "schema": {
@@ -184,7 +184,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "description": "A message indicating the result of the operation"
+                      "description": "A message indicating the result of the operation."
                     }
                   }
                 }
@@ -192,23 +192,23 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body."
           },
           "401": {
-            "description": "Unauthorized access"
+            "description": "Unauthorized access."
           },
           "404": {
-            "description": "Order not found"
+            "description": "Order not found."
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error."
           }
         }
       }
     },
     "/tenant": {
       "post": {
-        "summary": "Creates a new tenant",
+        "summary": "Create a Tenant.",
         "tags": [
           "Tenants"
         ],
@@ -229,7 +229,7 @@
         },
         "responses": {
           "200": {
-            "description": "User successfully created",
+            "description": "User successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -239,17 +239,17 @@
             }
           },
           "409": {
-            "description": "Permission denied"
+            "description": "Permission denied."
           },
           "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
     },
     "/tenant/wallets": {
       "get": {
-        "summary": "Fetches the wallets for a tenant",
+        "summary": "Fetches the wallets for a tenant.",
         "tags": [
           "Tenants"
         ],
@@ -270,23 +270,23 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "The name of the wallet (e.g. \"Tyga Wallet\")"
+                        "description": "The name of the wallet (e.g. \"Tyga Wallet\")."
                       },
                       "type": {
                         "type": "string",
-                        "description": "The type of wallet (e.g. \"distribution_wallet\")"
+                        "description": "The type of wallet (e.g. \"distribution_wallet\")."
                       },
                       "balance": {
                         "type": "number",
-                        "description": "The current balance of the wallet"
+                        "description": "The current balance of the wallet."
                       },
                       "totalDeposited": {
                         "type": "number",
-                        "description": "The total amount deposited into the wallet"
+                        "description": "The total amount deposited into the wallet."
                       },
                       "totalDistributed": {
                         "type": "number",
-                        "description": "The total amount distributed from the wallet"
+                        "description": "The total amount distributed from the wallet."
                       }
                     }
                   }
@@ -295,17 +295,17 @@
             }
           },
           "409": {
-            "description": "Permission denied"
+            "description": "Permission denied."
           },
           "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
     },
     "/tenant/deposit-addresses": {
       "get": {
-        "summary": "Fetches the deposit addresses for a tenant",
+        "summary": "Fetches the deposit addresses for a tenant.",
         "tags": [
           "Tenants"
         ],
@@ -326,22 +326,22 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "The name of the deposit address (e.g. \"distribution_wallet\")"
+                        "description": "The name of the deposit address (e.g. \"distribution_wallet\")."
                       },
                       "address": {
                         "type": "string",
-                        "description": "The deposit address for the tenant"
+                        "description": "The deposit address for the tenant."
                       },
                       "network": {
                         "type": "string",
-                        "description": "The network for the deposit address"
+                        "description": "The network for the deposit address."
                       },
                       "supportedTokens": {
                         "type": "array",
                         "items": {
                           "type": "string"
                         },
-                        "description": "The supported tokens for the deposit address"
+                        "description": "The supported tokens for the deposit address."
                       }
                     }
                   }
@@ -350,17 +350,17 @@
             }
           },
           "409": {
-            "description": "Permission denied"
+            "description": "Permission denied."
           },
           "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
     },
     "/transactions/users": {
       "get": {
-        "summary": "Fetches a list of transactions for a user",
+        "summary": "Fetches a list of transactions for a user.",
         "tags": [
           "Transactions"
         ],
@@ -374,7 +374,7 @@
             "in": "query",
             "name": "id",
             "required": false,
-            "description": "The ID of the transaction to retrieve",
+            "description": "The Id of the transaction to retrieve.",
             "schema": {
               "type": "string"
             }
@@ -383,7 +383,7 @@
             "in": "query",
             "name": "userId",
             "required": true,
-            "description": "The ID of the user whose transactions to retrieve",
+            "description": "The Id of the user whose transactions to retrieve.",
             "schema": {
               "type": "string"
             }
@@ -401,23 +401,23 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "The unique ID of the transaction"
+                        "description": "The unique Id of the transaction."
                       },
                       "userId": {
                         "type": "string",
-                        "description": "The ID of the user who initiated the transaction"
+                        "description": "The Id of the user who initiated the transaction."
                       },
                       "tenantId": {
                         "type": "string",
-                        "description": "The ID of the tenant associated with the transaction"
+                        "description": "The Id of the tenant associated with the transaction."
                       },
                       "status": {
                         "type": "string",
-                        "description": "The current status of the transaction"
+                        "description": "The current status of the transaction."
                       },
                       "amount": {
                         "type": "number",
-                        "description": "The amount of the transaction"
+                        "description": "The amount of the transaction."
                       }
                     }
                   }
@@ -426,156 +426,10 @@
             }
           },
           "409": {
-            "description": "Permission denied"
+            "description": "Permission denied."
           },
           "500": {
-            "description": "Internal error"
-          }
-        }
-      }
-    },
-    "/transactions/withdraw": {
-      "post": {
-        "summary": "Creates a withdrawal request for a user",
-        "tags": [
-          "Transactions"
-        ],
-        "servers": [
-          {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
-          }
-        ],
-        "requestBody": {
-          "description": "Object containing parameters required for withdrawal request",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userId": {
-                    "type": "string"
-                  },
-                  "amount": {
-                    "type": "number"
-                  },
-                  "network": {
-                    "type": "string"
-                  },
-                  "symbol": {
-                    "type": "string"
-                  },
-                  "withdrawAddress": {
-                    "type": "string"
-                  },
-                  "otp": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Withdrawal request created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "description": "The unique ID of the withdrawal request"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid parameters"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal error"
-          }
-        }
-      }
-    },
-    "/transactions/withdraw/estimate": {
-      "post": {
-        "summary": "Returns an estimate for a withdrawal request",
-        "tags": [
-          "Transactions"
-        ],
-        "servers": [
-          {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
-          }
-        ],
-        "requestBody": {
-          "description": "Object containing parameters required for withdrawal estimate",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userId": {
-                    "type": "string"
-                  },
-                  "amount": {
-                    "type": "number"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Withdrawal estimate",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "withdrawalAmount": {
-                      "type": "number"
-                    },
-                    "transactionFee": {
-                      "type": "number"
-                    },
-                    "subscriptionFee": {
-                      "type": "number"
-                    },
-                    "total": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid parameters"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
@@ -599,7 +453,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your unique API Key"
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
@@ -608,7 +462,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your API Hash"
+            "description": "Your API Hash."
           }
         ],
         "requestBody": {
@@ -623,7 +477,7 @@
         },
         "responses": {
           "200": {
-            "description": "Payout request successfully created",
+            "description": "Payout request successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -631,11 +485,11 @@
                   "properties": {
                     "transactionId": {
                       "type": "string",
-                      "description": "Unique ID for the transaction"
+                      "description": "Unique Id for the transaction."
                     },
                     "thirdPartyId": {
                       "type": "string",
-                      "description": "Unique ID of the third party involved in the transaction"
+                      "description": "Unique Id of the third party involved in the transaction."
                     }
                   }
                 }
@@ -643,87 +497,17 @@
             }
           },
           "409": {
-            "description": "User with the same third party ID already exists"
+            "description": "User with the same third party Id already exists."
           },
           "500": {
-            "description": "Internal error"
-          }
-        }
-      }
-    },
-    "/transactions/verification": {
-      "post": {
-        "summary": "Generates a verification code for a user and send to the user's email",
-        "tags": [
-          "Transactions"
-        ],
-        "servers": [
-          {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
-          }
-        ],
-        "requestBody": {
-          "description": "Object containing parameters required for verification code generation",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userId": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "withdrawal",
-                      "userPay",
-                      "providerPay"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Verification code generated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string",
-                      "enum": [
-                        "success",
-                        "error"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid parameters"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
     },
     "/user": {
       "get": {
-        "summary": "Fetch the user by id",
+        "summary": "Fetch the user by id.",
         "tags": [
           "Users"
         ],
@@ -740,7 +524,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "The user id"
+            "description": "The user id."
           },
           {
             "in": "header",
@@ -749,7 +533,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your unique API Key"
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
@@ -758,12 +542,12 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your API Hash"
+            "description": "Your API Hash."
           }
         ],
         "responses": {
           "200": {
-            "description": "The user response by id",
+            "description": "The user response by id.",
             "content": {
               "application/json": {
                 "schema": {
@@ -775,7 +559,7 @@
         }
       },
       "post": {
-        "summary": "Creates a new user",
+        "summary": "Create a new user.",
         "tags": [
           "Users"
         ],
@@ -792,7 +576,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your unique API Key"
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
@@ -801,7 +585,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your API Hash"
+            "description": "Your API Hash."
           }
         ],
         "requestBody": {
@@ -816,7 +600,7 @@
         },
         "responses": {
           "200": {
-            "description": "User successfully created",
+            "description": "User successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -826,17 +610,17 @@
             }
           },
           "409": {
-            "description": "User with the same third party ID already exists"
+            "description": "User with the same third party user id already exists."
           },
           "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
     },
     "/user/balances": {
       "get": {
-        "summary": "Fetch the balances of the user by id",
+        "summary": "Fetch the balances of the user by id.",
         "tags": [
           "Users"
         ],
@@ -853,7 +637,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "The user id"
+            "description": "The user id."
           },
           {
             "in": "header",
@@ -862,7 +646,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your unique API Key"
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
@@ -871,7 +655,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your API Hash"
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -890,7 +674,7 @@
     },
     "/user/deposit-addresses": {
       "get": {
-        "summary": "Fetches the deposit addresses for a user",
+        "summary": "Fetches the deposit addresses for a user.",
         "tags": [
           "Users"
         ],
@@ -907,7 +691,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "The user id"
+            "description": "The user id."
           },
           {
             "in": "header",
@@ -916,7 +700,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your unique API Key"
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
@@ -925,7 +709,7 @@
               "type": "string"
             },
             "required": true,
-            "description": "Your API Hash"
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -940,18 +724,18 @@
                     "properties": {
                       "address": {
                         "type": "string",
-                        "description": "The deposit address for the tenant"
+                        "description": "The deposit address for the tenant."
                       },
                       "network": {
                         "type": "string",
-                        "description": "The network for the deposit address"
+                        "description": "The network for the deposit address."
                       },
                       "supportedTokens": {
                         "type": "array",
                         "items": {
                           "type": "string"
                         },
-                        "description": "The supported tokens for the deposit address"
+                        "description": "The supported tokens for the deposit address."
                       }
                     }
                   }
@@ -960,10 +744,10 @@
             }
           },
           "409": {
-            "description": "Permission denied"
+            "description": "Permission denied."
           },
           "500": {
-            "description": "Internal error"
+            "description": "Internal error."
           }
         }
       }
@@ -976,31 +760,31 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the order"
+            "description": "Name of the order."
           },
           "description": {
             "type": "string",
-            "description": "Description of the order"
+            "description": "Description of the order."
           },
           "orderNumber": {
             "type": "string",
-            "description": "Unique order number"
+            "description": "Unique order number."
           },
           "amount": {
             "type": "number",
-            "description": "Total amount of the order"
+            "description": "Total amount of the order."
           },
           "email": {
             "type": "string",
-            "description": "Email of the customer making the order"
+            "description": "Email of the customer making the order."
           },
           "notifyUrl": {
             "type": "string",
-            "description": "URL to notify after order is completed"
+            "description": "URL to notify after order is completed."
           },
           "returnUrl": {
             "type": "string",
-            "description": "URL to redirect to after order is completed"
+            "description": "URL to redirect to after order is completed."
           }
         },
         "required": [
@@ -1013,11 +797,11 @@
         "properties": {
           "tygaUserId": {
             "type": "string",
-            "description": "Name of the order"
+            "description": "Name of the order."
           },
           "notifyUrl": {
             "type": "string",
-            "description": "Description of the order"
+            "description": "Description of the order."
           }
         },
         "required": [
@@ -1030,7 +814,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the order."
+            "description": "The Id of the order."
           },
           "orderNumber": {
             "type": "string",
@@ -1089,16 +873,29 @@
       "OrderStatus": {
         "type": "string",
         "enum": [
-          "new"
+          "new",
+          "processing",
+          "partial_paid",
+          "paid",
+          "processing_refund",
+          "refunded",
+          "expired",
+          "cancelled",
+          "insufficient_funds"
         ],
-        "description": "The status of the order (WIP more statusses coming)."
+        "description": "The status of the order."
       },
       "OrderState": {
         "type": "string",
         "enum": [
-          "pending"
+          "pending",
+          "processing",
+          "completed",
+          "expired",
+          "cancelled",
+          "insufficient_funds"
         ],
-        "description": "The state of the order (WIP more states coming)."
+        "description": "The state of the order."
       },
       "OrderCreateResponse": {
         "type": "object",
@@ -1109,7 +906,7 @@
           },
           "paymentUrl": {
             "type": "string",
-            "description": "The payment url to redirect to."
+            "description": "The payment URL to redirect to."
           }
         }
       },
@@ -1140,15 +937,15 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "The code of the tenant"
+            "description": "The Auth Code provided by TygaPay to create a new tenant."
           },
           "name": {
             "type": "string",
-            "description": "The name of the tenant"
+            "description": "The name of the tenant."
           },
           "contactEmail": {
             "type": "string",
-            "description": "The contact email of the tenant - typically the admin contact email"
+            "description": "The contact email of the tenant - typically the admin contact email."
           }
         }
       },
@@ -1157,15 +954,15 @@
         "properties": {
           "apiSecret": {
             "type": "string",
-            "description": "A secret for the new tenant"
+            "description": "A secret for the new tenant."
           },
           "apiKey": {
             "type": "string",
-            "description": "A unique API Key for the new tenant"
+            "description": "A unique API Key for the new tenant."
           },
           "message": {
             "type": "string",
-            "description": "A friendly message after a new tenant is created"
+            "description": "A friendly message after a new tenant is created."
           }
         }
       },
@@ -1179,15 +976,15 @@
         "properties": {
           "thirdPartyId": {
             "type": "string",
-            "description": "Third party unique transaction id - used to prevent duplicate transactions"
+            "description": "Third party unique transaction id."
           },
           "userId": {
             "type": "string",
-            "description": "Tyga user id"
+            "description": "Tyga user id."
           },
           "amount": {
             "type": "number",
-            "description": "Amount to credit"
+            "description": "Amount to credit."
           }
         }
       },
@@ -1205,41 +1002,37 @@
         "properties": {
           "thirdPartyUserId": {
             "type": "string",
-            "description": "Third party ID of the user"
+            "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
           },
           "firstName": {
             "type": "string",
-            "description": "First name of the user"
+            "description": "First name of the user."
           },
           "lastName": {
             "type": "string",
-            "description": "Last name of the user"
+            "description": "Last name of the user."
           },
           "languageCode": {
             "type": "string",
-            "description": "Language code of the user"
+            "description": "Language code of the user. e.g. en, fr, es etc."
           },
           "email": {
             "type": "string",
             "format": "email",
-            "description": "Email of the user"
+            "description": "Email of the user."
           },
           "country": {
             "type": "string",
-            "description": "Country of the user"
+            "description": "Country of the user. e.g. EU, NG, US etc."
           },
           "dateOfBirth": {
             "type": "string",
             "format": "date",
-            "description": "Date of birth of the user"
+            "description": "Date of birth of the user."
           },
           "phoneNumber": {
             "type": "string",
-            "description": "Phone number of the user"
-          },
-          "kycExperienceId": {
-            "type": "string",
-            "description": "KYC Experience Id of the user"
+            "description": "Phone number of the user. e.g. +2348123456789"
           }
         }
       },
@@ -1248,15 +1041,15 @@
         "properties": {
           "totalBalance": {
             "type": "number",
-            "description": "The users total balance"
+            "description": "The users total balance."
           },
           "mainBalance": {
             "type": "number",
-            "description": "The users main balance"
+            "description": "The users main balance."
           },
           "pendingBalance": {
             "type": "number",
-            "description": "The users pending balance"
+            "description": "The users pending balance."
           }
         }
       },
@@ -1265,11 +1058,11 @@
         "properties": {
           "userId": {
             "type": "string",
-            "description": "The newly created users Id"
+            "description": "The newly created users Id."
           },
           "thirdPartyUserId": {
             "type": "string",
-            "description": "Third party ID of the user"
+            "description": "Third party ID of the user."
           }
         }
       }
@@ -1278,19 +1071,19 @@
   "tags": [
     {
       "name": "Orders",
-      "description": "API for managing orders"
+      "description": "APIs for managing Orders."
     },
     {
       "name": "Tenants",
-      "description": "The tenants managing API"
+      "description": "APIs for managing Tenants."
     },
     {
       "name": "Transactions",
-      "description": "API for managing transactions"
+      "description": "API for managing Transactions."
     },
     {
       "name": "Users",
-      "description": "The users managing API"
+      "description": "APIs for managing Users."
     }
   ]
 }
