@@ -907,6 +907,10 @@
       "OrderCreate": {
         "type": "object",
         "properties": {
+          "type": {
+            "type": "string",
+            "description": "Order type e.g. \"payment\", \"deposit\"."
+          },
           "name": {
             "type": "string",
             "description": "Name of the order."
