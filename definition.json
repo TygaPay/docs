@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Tyga Pay Integration",
+    "title": "Tyga Pay API Integration",
     "version": "1.0.0",
-    "description": "Simply Integration into the Tyga Pay Platform"
+    "description": "API Integrations into the Tyga Pay Platform."
   },
   "paths": {
     "/orders": {
