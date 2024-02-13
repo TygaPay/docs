@@ -3,7 +3,7 @@
   "info": {
     "title": "Tyga Pay API Integration",
     "version": "1.0.0",
-    "description": "API Integrations into the Tyga Pay Platform."
+    "description": "APIs for the Tyga Pay Platform. For more info view: https://docs.tygapay.com."
   },
   "paths": {
     "/orders": {
