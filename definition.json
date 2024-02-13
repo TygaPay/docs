@@ -585,7 +585,7 @@
     },
     "/transactions/payout": {
       "post": {
-        "summary": "Create payout request that will credit user balance. All credits will be locked/pending until the funds are confirmed.",
+        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed..",
         "tags": [
           "Transactions"
         ],
