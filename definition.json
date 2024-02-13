@@ -17,6 +17,26 @@
             "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -63,6 +83,11 @@
         "tags": [
           "Orders"
         ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
         "parameters": [
           {
             "in": "path",
@@ -72,6 +97,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -112,6 +155,11 @@
         "tags": [
           "Orders"
         ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
         "parameters": [
           {
             "in": "path",
@@ -121,6 +169,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -163,6 +229,31 @@
         "summary": "Refunds an order by Id.",
         "tags": [
           "Orders"
+        ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
         ],
         "requestBody": {
           "required": true,
@@ -258,6 +349,26 @@
             "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
           }
         ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -312,6 +423,26 @@
         "servers": [
           {
             "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -387,6 +518,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "responses": {
