@@ -904,6 +904,67 @@
   },
   "components": {
     "schemas": {
+      "OrderCustomerInformation": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "First name of the customer."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the customer."
+          },
+          "dob": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Year of birth."
+              },
+              "month": {
+                "type": "number",
+                "description": "Month of birth."
+              },
+              "day": {
+                "type": "number",
+                "description": "Day of birth."
+              }
+            },
+            "description": "Date of birth of the customer."
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Country of the customer's address."
+              },
+              "line1": {
+                "type": "string",
+                "description": "Address line 1."
+              },
+              "line2": {
+                "type": "string",
+                "description": "Address line 2 (optional)."
+              },
+              "city": {
+                "type": "string",
+                "description": "City of the customer's address."
+              },
+              "state": {
+                "type": "string",
+                "description": "State of the customer's address."
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "Postal code of the customer's address."
+              }
+            },
+            "description": "Address of the customer."
+          }
+        }
+      },
       "OrderCreate": {
         "type": "object",
         "properties": {
@@ -938,6 +999,10 @@
           "returnUrl": {
             "type": "string",
             "description": "URL to redirect to after order is completed."
+          },
+          "customerInformation": {
+            "$ref": "#/components/schemas/OrderCustomerInformation",
+            "description": "Optional customer information for the order."
           }
         },
         "required": [
