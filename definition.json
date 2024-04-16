@@ -522,20 +522,20 @@
           {
             "in": "header",
             "name": "x-api-key",
-            "required": true,
-            "description": "Your unique API Key.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
             "name": "x-api-hash",
-            "required": true,
-            "description": "Your API Hash.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "responses": {
@@ -585,7 +585,7 @@
     },
     "/transactions/payout": {
       "post": {
-        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed.",
+        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed..",
         "tags": [
           "Transactions"
         ],
@@ -598,20 +598,20 @@
           {
             "in": "header",
             "name": "x-api-key",
-            "required": true,
-            "description": "Your unique API Key.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
             "name": "x-api-hash",
-            "required": true,
-            "description": "Your API Hash.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "requestBody": {
@@ -656,7 +656,7 @@
     },
     "/transactions/staking": {
       "post": {
-        "summary": "Create a Staking request that stakes specified token. All credits will be locked/pending until approved in the dashboard.",
+        "summary": "Create a staking request that stake spesified token. All credits will be locked/pending until its approved in dashboard",
         "tags": [
           "Transactions"
         ],
@@ -669,20 +669,20 @@
           {
             "in": "header",
             "name": "x-api-key",
-            "required": true,
-            "description": "Your unique API Key.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your unique API Key."
           },
           {
             "in": "header",
             "name": "x-api-hash",
-            "required": true,
-            "description": "Your API Hash.",
             "schema": {
               "type": "string"
-            }
+            },
+            "required": true,
+            "description": "Your API Hash."
           }
         ],
         "requestBody": {
