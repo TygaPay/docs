@@ -654,6 +654,77 @@
         }
       }
     },
+    "/transactions/staking": {
+      "post": {
+        "summary": "Create a Staking request that stake spesified token. All credits will be locked/pending until its approved in dashboard",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staking request successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
     "/user": {
       "get": {
         "summary": "Fetch the user by id.",
@@ -1181,28 +1252,6 @@
           "message": {
             "type": "string",
             "description": "A friendly message after a new tenant is created."
-          }
-        }
-      },
-      "PayoutRequest": {
-        "type": "object",
-        "required": [
-          "userId",
-          "amount",
-          "thirdPartyId"
-        ],
-        "properties": {
-          "thirdPartyId": {
-            "type": "string",
-            "description": "Third party unique transaction id."
-          },
-          "userId": {
-            "type": "string",
-            "description": "Tyga user id."
-          },
-          "amount": {
-            "type": "number",
-            "description": "Amount to credit."
           }
         }
       },
