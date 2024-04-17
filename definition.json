@@ -1289,6 +1289,9 @@
           },
           "network": {
             "type": "string",
+            "enum": [
+              "KRU"
+            ],
             "description": "Type of staking - Supported KRU"
           }
         }
