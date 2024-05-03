@@ -656,7 +656,7 @@
     },
     "/transactions/staking/payout": {
       "post": {
-        "summary": "Create a staking request for a specified token. All credits will remain locked or pending until approval is granted via the dashboard.",
+        "summary": "Create a staking payout transaction.",
         "tags": [
           "Transactions"
         ],
@@ -727,7 +727,7 @@
     },
     "/transactions/staking/payout/revoke": {
       "post": {
-        "summary": "Revoke a staking transaction.",
+        "summary": "Revoke a staking payout transaction.",
         "tags": [
           "Transactions"
         ],
