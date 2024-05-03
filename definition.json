@@ -654,9 +654,9 @@
         }
       }
     },
-    "/transactions/staking": {
+    "/transactions/staking/payout": {
       "post": {
-        "summary": "Create a staking request that stake spesified token. All credits will be locked/pending until its approved in dashboard",
+        "summary": "Create a staking request for a specified token. All credits will remain locked or pending until approval is granted via the dashboard.",
         "tags": [
           "Transactions"
         ],
@@ -690,7 +690,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/StakingRequest"
+                "$ref": "#/components/schemas/StakingPayoutRequest"
               }
             }
           }
@@ -717,7 +717,78 @@
             }
           },
           "409": {
-            "description": "User with the same third party Id already exists."
+            "description": "Unique Id with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/staking/payout/revoke": {
+      "post": {
+        "summary": "Revoke a staking transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeStakingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Revoked Staking Transaction Successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Unique Id with the same third party Id already exists."
           },
           "500": {
             "description": "Internal error."
@@ -1272,7 +1343,7 @@
           }
         }
       },
-      "StakingRequest": {
+      "StakingPayoutRequest": {
         "type": "object",
         "properties": {
           "thirdPartyId": {
@@ -1287,12 +1358,21 @@
             "type": "number",
             "description": "USD amount to stake."
           },
-          "network": {
+          "asset": {
             "type": "string",
             "enum": [
               "KRU"
             ],
             "description": "Type of staking - Supported KRU"
+          }
+        }
+      },
+      "RevokeStakingPayoutRequest": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Transaction Id for the staking request."
           }
         }
       },
