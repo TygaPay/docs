@@ -798,7 +798,7 @@
     },
     "/user": {
       "get": {
-        "summary": "Fetch the user by id.",
+        "summary": "Fetch the user by userId or thirdPartyUserId.",
         "tags": [
           "Users"
         ],
@@ -814,8 +814,17 @@
             "schema": {
               "type": "string"
             },
-            "required": true,
-            "description": "The user id."
+            "required": false,
+            "description": "The TygaPay user id."
+          },
+          {
+            "in": "query",
+            "name": "thirdPartyUserId",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "The Tenant user id."
           },
           {
             "in": "header",
