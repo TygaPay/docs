@@ -1397,6 +1397,10 @@
           "dateOfBirth"
         ],
         "properties": {
+          "userId": {
+            "type": "string",
+            "description": "TygaPay user id of the user. This is the unique identifier of the user in the TygaPay system."
+          },
           "thirdPartyUserId": {
             "type": "string",
             "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
@@ -1455,11 +1459,11 @@
         "properties": {
           "userId": {
             "type": "string",
-            "description": "The newly created users Id."
+            "description": "TygaPay user id of the user. This is the unique identifier of the user in the TygaPay system."
           },
           "thirdPartyUserId": {
             "type": "string",
-            "description": "Third party ID of the user."
+            "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
           }
         }
       }
