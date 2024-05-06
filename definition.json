@@ -1363,7 +1363,7 @@
             "type": "string",
             "description": "Tyga user id."
           },
-          "amount": {
+          "usdAmount": {
             "type": "number",
             "description": "USD amount to stake."
           },
