@@ -847,7 +847,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The user response by id.",
+            "description": "The User Information.",
             "content": {
               "application/json": {
                 "schema": {
