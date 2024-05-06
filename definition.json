@@ -697,7 +697,7 @@
         },
         "responses": {
           "200": {
-            "description": "Staking request successfully created.",
+            "description": "Staking Payout request successfully created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -761,7 +761,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RevokeStakingRequest"
+                "$ref": "#/components/schemas/RevokeStakingPayoutRequest"
               }
             }
           }
