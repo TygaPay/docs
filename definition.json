@@ -827,6 +827,15 @@
             "description": "The Tenant user id."
           },
           {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "The Tenant user email address."
+          },
+          {
             "in": "header",
             "name": "x-api-key",
             "schema": {
