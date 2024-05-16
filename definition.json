@@ -798,7 +798,7 @@
     },
     "/user": {
       "get": {
-        "summary": "Fetch the user by userId or thirdPartyUserId.",
+        "summary": "Fetch the user by userId, thirdPartyUserId or email.",
         "tags": [
           "Users"
         ],
