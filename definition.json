@@ -297,6 +297,160 @@
         }
       }
     },
+    "/orders/:orderId/refund/crypto/otp": {
+      "post": {
+        "summary": "Send a refund OTP to the tenant admin's account for a specified order.",
+        "tags": [
+          "Orders"
+        ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The unique identifier of the order for which the refund is to be processed."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Refund OTP has been sent successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "A message indicating the result of the operation."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body."
+          },
+          "401": {
+            "description": "Unauthorized access."
+          },
+          "404": {
+            "description": "Order not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/orders/{orderId}/refund/crypto": {
+      "post": {
+        "summary": "Process a cryptocurrency refund for an order.",
+        "tags": [
+          "Orders"
+        ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The unique identifier of the order for which the refund is to be processed."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CryptoRefundRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully initiated the refund request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "A message indicating the result of the operation."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body."
+          },
+          "401": {
+            "description": "Unauthorized access."
+          },
+          "404": {
+            "description": "Order not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
     "/tenant": {
       "post": {
         "summary": "Create a Tenant.",
@@ -1148,247 +1302,6 @@
   },
   "components": {
     "schemas": {
-      "OrderCustomerInformation": {
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "type": "string",
-            "description": "First name of the customer."
-          },
-          "lastName": {
-            "type": "string",
-            "description": "Last name of the customer."
-          },
-          "dob": {
-            "type": "object",
-            "properties": {
-              "year": {
-                "type": "number",
-                "description": "Year of birth."
-              },
-              "month": {
-                "type": "number",
-                "description": "Month of birth."
-              },
-              "day": {
-                "type": "number",
-                "description": "Day of birth."
-              }
-            },
-            "description": "Date of birth of the customer."
-          },
-          "address": {
-            "type": "object",
-            "properties": {
-              "country": {
-                "type": "string",
-                "description": "Country of the customer's address."
-              },
-              "line1": {
-                "type": "string",
-                "description": "Address line 1."
-              },
-              "line2": {
-                "type": "string",
-                "description": "Address line 2 (optional)."
-              },
-              "city": {
-                "type": "string",
-                "description": "City of the customer's address."
-              },
-              "state": {
-                "type": "string",
-                "description": "State of the customer's address."
-              },
-              "postalCode": {
-                "type": "string",
-                "description": "Postal code of the customer's address."
-              }
-            },
-            "description": "Address of the customer."
-          }
-        }
-      },
-      "OrderCreate": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Order type e.g. \"payment\", \"deposit\"."
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the order."
-          },
-          "description": {
-            "type": "string",
-            "description": "Description of the order."
-          },
-          "orderNumber": {
-            "type": "string",
-            "description": "Unique order number."
-          },
-          "amount": {
-            "type": "number",
-            "description": "Total amount of the order."
-          },
-          "email": {
-            "type": "string",
-            "description": "Email of the customer making the order."
-          },
-          "notifyUrl": {
-            "type": "string",
-            "description": "URL to notify after order is completed."
-          },
-          "returnUrl": {
-            "type": "string",
-            "description": "URL to redirect to after order is completed."
-          },
-          "customerInformation": {
-            "$ref": "#/components/schemas/OrderCustomerInformation",
-            "description": "Optional customer information for the order."
-          }
-        },
-        "required": [
-          "orderNumber",
-          "amount"
-        ]
-      },
-      "OrderRefund": {
-        "type": "object",
-        "properties": {
-          "tygaUserId": {
-            "type": "string",
-            "description": "Name of the order."
-          },
-          "notifyUrl": {
-            "type": "string",
-            "description": "Description of the order."
-          }
-        },
-        "required": [
-          "tygaUserId",
-          "notifyUrl"
-        ]
-      },
-      "Order": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The Id of the order."
-          },
-          "orderNumber": {
-            "type": "string",
-            "description": "The unique order number."
-          },
-          "name": {
-            "type": "string",
-            "description": "An optional name of the order."
-          },
-          "description": {
-            "type": "string",
-            "description": "An optional description of the order."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The total amount of the order."
-          },
-          "amountPaid": {
-            "type": "number",
-            "description": "The amount paid towards the order."
-          },
-          "amountDue": {
-            "type": "number",
-            "description": "The amount due for the order."
-          },
-          "status": {
-            "$ref": "#/components/schemas/OrderStatus",
-            "description": "The status of the order."
-          },
-          "state": {
-            "$ref": "#/components/schemas/OrderState",
-            "description": "The state of the order."
-          },
-          "email": {
-            "type": "string",
-            "description": "The email address of the customer who placed the order."
-          },
-          "notifyUrl": {
-            "type": "string",
-            "description": "The URL to notify upon order completion."
-          },
-          "returnUrl": {
-            "type": "string",
-            "description": "The URL to redirect to upon order completion."
-          },
-          "createdDate": {
-            "type": "string",
-            "description": "The date the order was created."
-          },
-          "modifiedDate": {
-            "type": "string",
-            "description": "The date the order was last modified."
-          }
-        }
-      },
-      "OrderStatus": {
-        "type": "string",
-        "enum": [
-          "new",
-          "processing",
-          "partial_paid",
-          "paid",
-          "processing_refund",
-          "refunded",
-          "expired",
-          "cancelled",
-          "insufficient_funds"
-        ],
-        "description": "The status of the order."
-      },
-      "OrderState": {
-        "type": "string",
-        "enum": [
-          "pending",
-          "processing",
-          "completed",
-          "expired",
-          "cancelled",
-          "insufficient_funds"
-        ],
-        "description": "The state of the order."
-      },
-      "OrderCreateResponse": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "string",
-            "description": "The TygaPay order id of the order."
-          },
-          "paymentUrl": {
-            "type": "string",
-            "description": "The payment URL to redirect to."
-          }
-        }
-      },
-      "OrderCancelResponse": {
-        "type": "object",
-        "properties": {
-          "orderId": {
-            "type": "string",
-            "description": "The TygaPay order id of the order."
-          },
-          "state": {
-            "type": "string",
-            "description": "Order state after cancellation."
-          },
-          "status": {
-            "type": "string",
-            "description": "Order status after cancellation."
-          }
-        }
-      },
       "Tenant": {
         "type": "object",
         "required": [
