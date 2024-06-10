@@ -149,7 +149,7 @@
         }
       }
     },
-    "/orders/{orderId}/cancel": {
+    "/orders/:orderId/cancel": {
       "put": {
         "summary": "Cancels an order by Id.",
         "tags": [
@@ -224,7 +224,7 @@
         }
       }
     },
-    "/orders/{orderId}/refund": {
+    "/orders/:orderId/refund": {
       "post": {
         "summary": "Refunds an order by Id.",
         "tags": [
@@ -369,7 +369,7 @@
         }
       }
     },
-    "/orders/{orderId}/refund/crypto": {
+    "/orders/:orderId/refund/crypto": {
       "post": {
         "summary": "Process a cryptocurrency refund for an order.",
         "tags": [
@@ -1523,6 +1523,19 @@
           "paymentUrl": {
             "type": "string",
             "description": "The payment URL to redirect to."
+          }
+        }
+      },
+      "OrderCancelResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "description": "The TygaPay order id of the order."
+          },
+          "status": {
+            "type": "string",
+            "description": "Final status of the order. e.g cancelled."
           }
         }
       },
