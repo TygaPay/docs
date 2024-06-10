@@ -1534,8 +1534,8 @@
             "description": "The TygaPay order id of the order."
           },
           "status": {
-            "type": "string",
-            "description": "Final status of the order. e.g cancelled."
+            "$ref": "#/components/schemas/OrderStatus",
+            "description": "The status of the order."
           }
         }
       },
