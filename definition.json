@@ -299,7 +299,7 @@
     },
     "/orders/:orderId/refund/crypto/otp": {
       "post": {
-        "summary": "Send a refund OTP to the tenant admin's account for a specified order.",
+        "summary": "Send a refund OTP to the tenant admin's account.",
         "tags": [
           "Orders"
         ],
