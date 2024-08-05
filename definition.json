@@ -1056,7 +1056,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateRequest"
               }
             }
           }
@@ -1067,7 +1067,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserCreate"
+                  "$ref": "#/components/schemas/UserCreateResponse"
                 }
               }
             }
@@ -1628,6 +1628,10 @@
           "amount": {
             "type": "number",
             "description": "Amount to credit."
+          },
+          "walletType": {
+            "type": "string",
+            "description": "Wallet to credit. e.g. \"tyga\", \"usd\", \"eur\", \"kru\"."
           }
         }
       },
@@ -1733,7 +1737,46 @@
           }
         }
       },
-      "UserCreate": {
+      "UserCreateRequest": {
+        "type": "object",
+        "properties": {
+          "thirdPartyUserId": {
+            "type": "string",
+            "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the user."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the user."
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "Language code of the user. e.g. en, fr, es etc."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email of the user."
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of the user. e.g. EU, NG, US etc."
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of birth of the user."
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the user. e.g. +2348123456789"
+          }
+        }
+      },
+      "UserCreateResponse": {
         "type": "object",
         "properties": {
           "userId": {
