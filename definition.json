@@ -643,6 +643,443 @@
         }
       }
     },
+    "/transactions/users": {
+      "get": {
+        "summary": "Fetches a list of transactions for a user.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "description": "The Id of the transaction to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "userId",
+            "required": true,
+            "description": "The Id of the user whose transactions to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "The unique Id of the transaction."
+                      },
+                      "userId": {
+                        "type": "string",
+                        "description": "The Id of the user who initiated the transaction."
+                      },
+                      "tenantId": {
+                        "type": "string",
+                        "description": "The Id of the tenant associated with the transaction."
+                      },
+                      "status": {
+                        "type": "string",
+                        "description": "The current status of the transaction."
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "The amount of the transaction."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Permission denied."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions": {
+      "get": {
+        "summary": "Fetches a transaction by order number or transaction hash.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "txHash",
+            "required": false,
+            "description": "The transaction hash to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "orderNumber",
+            "required": false,
+            "description": "The order number to retrieve.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "x-tenant-id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The tenant ID."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The unique Id of the transaction."
+                    },
+                    "userId": {
+                      "type": "string",
+                      "description": "The Id of the user who initiated the transaction."
+                    },
+                    "tenantId": {
+                      "type": "string",
+                      "description": "The Id of the tenant associated with the transaction."
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "The current status of the transaction."
+                    },
+                    "side": {
+                      "type": "string",
+                      "description": "The side of the transaction."
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "The type of the transaction."
+                    },
+                    "orderId": {
+                      "type": "string",
+                      "description": "The order Id associated with the transaction."
+                    },
+                    "orderNumber": {
+                      "type": "string",
+                      "description": "The order number associated with the transaction."
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount of the transaction."
+                    },
+                    "txHash": {
+                      "type": "string",
+                      "description": "The transaction hash."
+                    },
+                    "createdDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The date the transaction was created."
+                    },
+                    "completedDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The date the transaction was completed."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Either orderNumber or txHash is required."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/payout": {
+      "post": {
+        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed..",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payout request successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/staking/payout": {
+      "post": {
+        "summary": "Create a staking payout transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakingPayoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staking Payout request successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Unique Id with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/staking/payout/revoke": {
+      "post": {
+        "summary": "Revoke a staking payout transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeStakingPayoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Revoked Staking Transaction Successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Unique Id with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
     "/user": {
       "get": {
         "summary": "Fetch the user by userId, thirdPartyUserId or email.",
@@ -1492,6 +1929,10 @@
     {
       "name": "Tenants",
       "description": "APIs for managing Tenants."
+    },
+    {
+      "name": "Transactions",
+      "description": "API for managing Transactions."
     },
     {
       "name": "Users",
