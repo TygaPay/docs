@@ -869,7 +869,7 @@
     },
     "/transactions/payout": {
       "post": {
-        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed..",
+        "summary": "Create a payout request that will credit a user's balance. All credits will be locked/pending until the funds are confirmed.",
         "tags": [
           "Transactions"
         ],
@@ -1786,6 +1786,10 @@
               "KRU"
             ],
             "description": "Type of staking - Supported KRU"
+          },
+          "durationInMonths": {
+            "type": "number",
+            "description": "Staking duration in months. Defaults to 3 months if not set."
           }
         }
       },
