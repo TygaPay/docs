@@ -1790,6 +1790,10 @@
           "durationInMonths": {
             "type": "number",
             "description": "Staking duration in months. Defaults to 3 months if not set."
+          },
+          "notifyUrl": {
+            "type": "string",
+            "description": "URL to notify after order is completed. (Webhook)"
           }
         }
       },
