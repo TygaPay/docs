@@ -1079,7 +1079,7 @@
     },
     "/transactions/refund": {
       "post": {
-        "summary": "Refund Pending Confirmation Payment Transaction.",
+        "summary": "Refund Pending Confirmation Payment Transactions.",
         "tags": [
           "Transactions"
         ],
