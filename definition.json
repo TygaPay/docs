@@ -1071,8 +1071,73 @@
               }
             }
           },
-          "409": {
-            "description": "Unique Id with the same third party Id already exists."
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/refund": {
+      "post": {
+        "summary": "Refund Pending Confirmation Payment Transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentRefundRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Refund Payment Transaction Successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "description": "Status of the refund transaction."
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Message indicating the status of the refund transaction."
+                    }
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal error."
@@ -1803,6 +1868,19 @@
           "transactionId": {
             "type": "string",
             "description": "Transaction Id for the staking request."
+          }
+        }
+      },
+      "PaymentRefundRequest": {
+        "type": "object",
+        "properties": {
+          "txId": {
+            "type": "string",
+            "description": "Payment transaction id."
+          },
+          "email": {
+            "type": "string",
+            "description": "TygaPay account email that will receive the refund."
           }
         }
       },
