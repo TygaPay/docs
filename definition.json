@@ -1827,6 +1827,10 @@
           "walletType": {
             "type": "string",
             "description": "Wallet to credit. e.g. \"tyga\", \"usd\", \"eur\", \"kru\"."
+          },
+          "notifyUrl": {
+            "type": "string",
+            "description": "URL to notify after the payout is completed. (Webhook)"
           }
         }
       },
@@ -1858,7 +1862,7 @@
           },
           "notifyUrl": {
             "type": "string",
-            "description": "URL to notify after order is completed. (Webhook)"
+            "description": "URL to notify after the payout is completed. (Webhook)"
           }
         }
       },
