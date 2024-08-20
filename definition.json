@@ -1579,7 +1579,7 @@
           },
           "amount": {
             "type": "number",
-            "description": "Total amount of the order."
+            "description": "Total amount of the order. Amount is optional for 'deposit' orders."
           },
           "email": {
             "type": "string",
