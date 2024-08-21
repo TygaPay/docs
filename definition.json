@@ -1718,6 +1718,25 @@
           "paymentUrl": {
             "type": "string",
             "description": "The payment URL to redirect to."
+          },
+          "paymentDeepLinkUrl": {
+            "type": "string",
+            "description": "The payment deep link URL to open in the TygaPay app. This is only available for mobile devices."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "new",
+              "expired",
+              "cancelled",
+              "paid",
+              "partial_paid"
+            ],
+            "description": "The status of the order. If the status is 'new', the new order was created successfully."
+          },
+          "alreadyExists": {
+            "type": "boolean",
+            "description": "Indicates if the order already exists."
           }
         }
       },
