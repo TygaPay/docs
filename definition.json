@@ -1221,7 +1221,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "code": {
+                    "status": {
                       "type": "string",
                       "example": "user_not_found"
                     },
