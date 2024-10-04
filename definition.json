@@ -1866,6 +1866,14 @@
           "notifyUrl": {
             "type": "string",
             "description": "URL to notify after the payout is completed. (Webhook)"
+          },
+          "pauseOnInsuffientFunds": {
+            "type": "boolean",
+            "description": "Payout wont auto process if buyer has insufficient funds."
+          },
+          "processImmediately": {
+            "type": "boolean",
+            "description": "Payout will be processed immediately."
           }
         }
       },
